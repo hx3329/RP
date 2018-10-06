@@ -43,6 +43,8 @@ class SignUpPage extends React.Component{
         signUpLastName: '',
         signUpEmail: '',
         signUpPassword: '',
+        signUpAddress:'',
+        signUpPhone:'',
         signUpError: '',
         isLoading: true,
         token: '',
@@ -55,6 +57,9 @@ class SignUpPage extends React.Component{
     this.handleLastNameChange = this.handleLastNameChange.bind(this);
     this.handleEmailChange = this.handleEmailChange.bind(this);
     this.handlePasswordChange = this.handlePasswordChange.bind(this);
+    this.handleAddressChange=this.handleAddressChange.bind(this);
+    this.handlePhoneChange=this.handlePhoneChange.bind(this);
+
 
     this.onSignUp = this.onSignUp.bind(this);
   }
@@ -115,6 +120,15 @@ class SignUpPage extends React.Component{
     this.setState({signUpPassword:e.target.value})
   }
 
+  handleAddressChange(e){
+    this.setState({signUpAddress:e.target.value});
+  }
+
+  handlePhoneChange(e){
+    this.setState({signUpPhone:e.target.value});
+  }
+
+
   onSignUp(){
     //grap state
     const {
@@ -122,6 +136,8 @@ class SignUpPage extends React.Component{
       signUpLastName,
       signUpEmail,
       signUpPassword,
+      signUpAddress,
+      signUpPhone
     } = this.state;
 
     this.setState({
@@ -141,7 +157,9 @@ class SignUpPage extends React.Component{
         lastName: signUpLastName,
         email: signUpEmail,
         password: signUpPassword,
-          errors:this.validate()
+        address:signUpAddress,
+        phone:signUpPhone,
+        errors:this.validate()
       }),
 
     }).then(res => res.json())
@@ -155,15 +173,23 @@ class SignUpPage extends React.Component{
             signUpEmail:'',
             signUpPassword:'',
             signUpFirstName:'',
-            signUpLastName:''
+            signUpLastName:'',
+            signUpAddress: '',
+            signUpPhone:''
           });
-        }else{
+        }else if(this.validate()){
           this.setState({
             // signUpError: json.message,
               errors:this.validate(),
               formClassName: "warning",
-            isLoading: false
+              isLoading: false
           });
+        }else{
+            this.setState({
+                signUpError: json.message,
+                formClassName:"error",
+                isLoading: false
+            });
         }
       });
   }
@@ -178,19 +204,15 @@ class SignUpPage extends React.Component{
       signUpLastName,
       signUpEmail,
       signUpPassword,
-        errors,
+      signUpAddress,
+      signUpPhone,
+      errors,
       formClassName
     } = this.state;
 
-    // var str='';
+
     const err = Object.values(errors);  // extract error from error object
-    // for (var i =0; i<err.length;i++){
-    //     str =  `${str}
-    //
-    //     ${err[i]}
-    //     `
-    // }
-    // console.log(str);
+
 
     if (isLoading){
       return(<div><p>Loading.....</p></div>);
@@ -212,15 +234,15 @@ class SignUpPage extends React.Component{
                     <Form.Input type="name" label="Last name" placeholder="Last name" value={signUpLastName} onChange={this.handleLastNameChange} />
                   </Form.Group>
                   <Form.Field>
-                    <Form.Input label="Address" placeholder="Address" />
-                    <Form.Input icon="mobile alternate" iconPosition="left" label="Phone" placeholder="Phone" />
+                    <Form.Input label="Address" placeholder="Address" value={signUpAddress} onChange={this.handleAddressChange}/>
+                    <Form.Input icon="mobile alternate" iconPosition="left" label="Phone" placeholder="Phone" value={signUpPhone} onChange={this.handlePhoneChange}/>
                   </Form.Field>
-                  <Form.Checkbox label="I agree to the Terms and Conditions" />
                   <Button onClick={this.onSignUp} primary>
                     SignUp
                   </Button>
                 </Segment>
                 <Message warning color="yellow" header="Woah!" content={err} />
+                <Message error color="red" header="Woah!" content={signUpError} />
                 <Message success color="green" header="Nice one!" content={signUpError} />
               </Form>
             </Grid.Column>
