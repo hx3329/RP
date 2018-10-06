@@ -107,6 +107,7 @@ io.on('connection', (socket) => {
     socket.on('add', data => socket.broadcast.emit('add', data));
     socket.on('update', data => socket.broadcast.emit('update', data));
     socket.on('delete', data => socket.broadcast.emit('delete', data));
+    socket.on('get', data => socket.broadcast.emit('get', data));
 
     socket.on('disconnect', () => {
         online--;

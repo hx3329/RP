@@ -7,7 +7,7 @@ module.exports = app => {
    */
   app.post("/api/account/signup", (req, res, next) => {
     const { body } = req;
-    const { firstName, lastName, password, errors } = body;
+    const { firstName, lastName, password, address, phone, errors } = body;
 
     let { email } = body;
 
@@ -43,6 +43,19 @@ module.exports = app => {
         message: "Error: Password cannot be blank."
       });
     }
+    if (!address) {
+      return res.send({
+        success: false,
+        message: "Error: Address cannot be blank."
+      });
+    }
+    if (!phone) {
+      return res.send({
+        success: false,
+        message: "Error: Phone cannot be blank."
+      });
+    }
+
     email = email.toLowerCase();
     email = email.trim();
     // Steps:
@@ -70,6 +83,8 @@ module.exports = app => {
         newUser.lastName = lastName;
         newUser.firstName = firstName;
         newUser.password = newUser.generateHash(password);
+        newUser.address =  address;
+        newUser.phone = phone;
         newUser.save((err, user) => {
           if (err) {
             return res.send({
