@@ -62,6 +62,7 @@ class App extends React.Component {
             <Route path="/login" component={Signin} />
             <Route path="/signup" component={Register} />
             <Route path="/map" component={MapPage} />
+            {/*<Route path="/map" render={() => <MapPage socket={this.state.socket}/>}/>*/}
             {/*<Route*/}
                 {/*path="/data" redner={() =>  <h3>hi</h3>}*/}
             {/*/>*/}

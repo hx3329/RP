@@ -6,6 +6,7 @@ import { Container } from "semantic-ui-react";
 import DataTable from "./DataTable";
 import InputData from "./InputData";
 
+
 class Data extends Component {
   constructor(props) {
     super(props);
@@ -44,6 +45,7 @@ class Data extends Component {
         this.setState({
           datas: json
         });
+        localStorage.setItem("the_main_map", JSON.stringify(json));
       })
       .catch(err => {
         console.log(err);

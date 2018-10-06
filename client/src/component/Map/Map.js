@@ -293,8 +293,8 @@ class AppMap extends Component {
   }
 
   componentDidMount() {
-    //get map airlines
-    fetch("/api/airline")
+    // get map airlines
+    fetch("/api/datas")
       .then(res => res.json())
       .then(json => {
         this.setState({
@@ -497,12 +497,16 @@ class AppMap extends Component {
       base +
       "  </tbody>" +
       "</table>";
-    var flightsSource = new VectorSource({
+
+      var flightsSource = new VectorSource({
       wrapX: false,
       attributions: attribution,
       loader: function() {
         // var flightsData = flightJson.flights;
-        var flightsData = JSON.parse(localStorage.getItem("the_main_map"));
+          var flightsData = {};
+          if(localStorage.getItem("the_main_map")){
+              flightsData = JSON.parse(localStorage.getItem("the_main_map"));
+          }
         var CityData = CityJson;
         for (var i = 0; i < flightsData.length; i++) {
           // var flight = flightsData[i];
@@ -550,8 +554,8 @@ class AppMap extends Component {
 
           var arcLine = arcGenerator.Arc(500, { offset: 10 });
           if (arcLine.geometries.length === 1) {
-            // var line = new LineString(arcLine.geometries[0].coords);
-            var line = new LineString(bezier.geometry.coordinates);
+            var line = new LineString(arcLine.geometries[0].coords);
+            // var line = new LineString(bezier.geometry.coordinates);
             // var point =  new Point(arcLine.geometries[0].coords[0]);
             line.transform("EPSG:4326", "EPSG:3857");
             // point.transform('EPSG:4326', 'EPSG:3857');
