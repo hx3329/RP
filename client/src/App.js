@@ -17,7 +17,7 @@ import fakeAuth from "./component/Auth/fakeAuth";
 import DataPage from "./component/Data/Data";
 import io from "socket.io-client";
 import "./App.css";
-import {getFromStorage} from "./utils/storage";
+import { getFromStorage } from "./utils/storage";
 
 const PrivateRoute = ({ component: Component, ...rest }) => (
   <Route
@@ -38,21 +38,20 @@ const PrivateRoute = ({ component: Component, ...rest }) => (
 );
 
 class App extends React.Component {
-    constructor(props){
-        super(props);
-        this.state ={
-            socket:io.connect(process.env.REACT_APP_API_URL || "")
-        }
-    }
-
+  constructor(props) {
+    super(props);
+    this.state = {
+      socket: io.connect(process.env.REACT_APP_API_URL || "")
+    };
+  }
 
   render() {
-      {
-          const object = getFromStorage("the_main_app");
-          if (object && object.token) {
-              fakeAuth.authenticate();
-          }
+    {
+      const object = getFromStorage("the_main_app");
+      if (object && object.token) {
+        fakeAuth.authenticate();
       }
+    }
     return (
       <Router>
         <Layout>
@@ -64,9 +63,12 @@ class App extends React.Component {
             <Route path="/map" component={MapPage} />
             {/*<Route path="/map" render={() => <MapPage socket={this.state.socket}/>}/>*/}
             {/*<Route*/}
-                {/*path="/data" redner={() =>  <h3>hi</h3>}*/}
+            {/*path="/data" redner={() =>  <h3>hi</h3>}*/}
             {/*/>*/}
-            <Route path="/data" render={() => <DataPage socket={this.state.socket}/>}/>
+            <Route
+              path="/data"
+              render={() => <DataPage socket={this.state.socket} />}
+            />
             <PrivateRoute path="/group" component={Group} />
             <Route component={NotFound} />
           </Switch>

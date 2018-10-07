@@ -83,7 +83,7 @@ module.exports = app => {
         newUser.lastName = lastName;
         newUser.firstName = firstName;
         newUser.password = newUser.generateHash(password);
-        newUser.address =  address;
+        newUser.address = address;
         newUser.phone = phone;
         newUser.save((err, user) => {
           if (err) {

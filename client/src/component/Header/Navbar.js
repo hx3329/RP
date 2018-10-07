@@ -12,7 +12,7 @@ import PropTypes from "prop-types";
 import React from "react";
 import { Link } from "react-router-dom";
 import fakeAuth from "../Auth/fakeAuth";
-import {getFromStorage} from "../../utils/storage";
+import { getFromStorage } from "../../utils/storage";
 
 /*
 * Neither Semantic UI nor Semantic UI React offer a responsive navbar
@@ -23,44 +23,43 @@ class DesktopContainer extends Component {
     this.state = {
       activeItem: "home"
     };
-    this.logout=this.logout.bind(this);
+    this.logout = this.logout.bind(this);
   }
 
-    logout() {
-        this.setState({
-            isLoading: true
-        });
+  logout() {
+    this.setState({
+      isLoading: true
+    });
 
-        const object = getFromStorage("the_main_app");
-        if (object && object.token) {
-            const { token } = object;
-            //verify token
-            fetch("/api/account/logout?token=" + token)
-                .then(res => res.json())
-                .then(json => {
-                    if (json.success) {
-                        window.localStorage.removeItem("the_main_app");
-                        fakeAuth.signout();
-                        this.setState({
-                            //clear token
-                            token: "",
-                            isLoading: false
-                        });
-                    } else {
-                        this.setState({
-                            isLoading: false
-                        });
-                    }
-                });
-        } else {
+    const object = getFromStorage("the_main_app");
+    if (object && object.token) {
+      const { token } = object;
+      //verify token
+      fetch("/api/account/logout?token=" + token)
+        .then(res => res.json())
+        .then(json => {
+          if (json.success) {
+            window.localStorage.removeItem("the_main_app");
+            fakeAuth.signout();
             this.setState({
-                isLoading: false
+              //clear token
+              token: "",
+              isLoading: false
             });
-        }
+          } else {
+            this.setState({
+              isLoading: false
+            });
+          }
+        });
+    } else {
+      this.setState({
+        isLoading: false
+      });
     }
+  }
 
-
-    handleItemClick = (e, { name }) => {
+  handleItemClick = (e, { name }) => {
     this.setState({ activeItem: name });
   };
 
@@ -135,38 +134,37 @@ class DesktopContainer extends Component {
                 >
                   Group
                 </Menu.Item>
-                  {
-                    (fakeAuth.isAuthenticated)?
-                          (<Menu.Item position="right">
-                          <Button
-                              onClick={this.logout}
-                              inverted={!fixed}>
-                              Log out
-                          </Button>
-                          <Button
-                              as={Link}
-                              to="/about"
-                              inverted={!fixed}
-                              primary={fixed}
-                              style={{ marginLeft: "0.5em" }}
-                          >
-                              Profile
-                          </Button>
-                      </Menu.Item>):(<Menu.Item position="right">
-                          <Button as={Link} to="/login" inverted={!fixed}>
-                              Log in
-                          </Button>
-                          <Button
-                              as={Link}
-                              to="/signup"
-                              inverted={!fixed}
-                              primary={fixed}
-                              style={{ marginLeft: "0.5em" }}
-                          >
-                              Sign Up
-                          </Button>
-                      </Menu.Item>)
-                  }
+                {fakeAuth.isAuthenticated ? (
+                  <Menu.Item position="right">
+                    <Button onClick={this.logout} inverted={!fixed}>
+                      Log out
+                    </Button>
+                    <Button
+                      as={Link}
+                      to="/about"
+                      inverted={!fixed}
+                      primary={fixed}
+                      style={{ marginLeft: "0.5em" }}
+                    >
+                      Profile
+                    </Button>
+                  </Menu.Item>
+                ) : (
+                  <Menu.Item position="right">
+                    <Button as={Link} to="/login" inverted={!fixed}>
+                      Log in
+                    </Button>
+                    <Button
+                      as={Link}
+                      to="/signup"
+                      inverted={!fixed}
+                      primary={fixed}
+                      style={{ marginLeft: "0.5em" }}
+                    >
+                      Sign Up
+                    </Button>
+                  </Menu.Item>
+                )}
               </Container>
             </Menu>
           </Segment>

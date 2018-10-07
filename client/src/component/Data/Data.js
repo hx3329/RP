@@ -6,7 +6,6 @@ import { Container } from "semantic-ui-react";
 import DataTable from "./DataTable";
 import InputData from "./InputData";
 
-
 class Data extends Component {
   constructor(props) {
     super(props);
@@ -28,12 +27,15 @@ class Data extends Component {
   // Place socket.io code inside here
   componentDidMount() {
     this.fetchDatas();
-    this.props.socket.on("visitor enters", data => this.setState({ online: data }));
-    this.props.socket.on("visitor exits", data => this.setState({ online: data }));
+    this.props.socket.on("visitor enters", data =>
+      this.setState({ online: data })
+    );
+    this.props.socket.on("visitor exits", data =>
+      this.setState({ online: data })
+    );
     this.props.socket.on("add", data => this.handleDataAdded(data));
     this.props.socket.on("update", data => this.handleDataUpdated(data));
     this.props.socket.on("delete", data => this.handleDataDeleted(data));
-
   }
 
   // Fetch data from the back-end

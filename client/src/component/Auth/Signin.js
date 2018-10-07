@@ -9,7 +9,6 @@ import {
   Segment,
   Divider
 } from "semantic-ui-react";
-
 import { getFromStorage, setInStorage } from "../../utils/storage";
 import fakeAuth from "./fakeAuth";
 import Redirect from "react-router-dom/es/Redirect";
@@ -134,38 +133,17 @@ class LoginPage extends React.Component {
     }
 
     if (!token) {
-      return (
-        <div style={Style}>
-          <Grid
-            textAlign="center"
-            style={{ height: "100%" }}
-            verticalAlign="middle"
-          >
+      return <div style={Style}>
+          <Grid textAlign="center" style={{ height: "100%" }} verticalAlign="middle">
             <Grid.Column style={{ maxWidth: 450 }}>
               {/*<Header as='h1' color='blue' textAlign='center' size='massive'>*/}
               {/*<Image src='./logo2.jpg' fluid/> Login*/}
               {/*</Header>*/}
-              <Image src="./logo2.jpg" size="small" verticalAlign="middle" />
+              <Image src={require("./logo.jpg")} height="200px" width="200px" verticalAlign="middle" />
               <Form className={formClassName} size="large">
                 <Segment stacked>
-                  <Form.Input
-                    fluid
-                    icon="user"
-                    iconPosition="left"
-                    placeholder="E-mail address"
-                    type="email"
-                    value={signInEmail}
-                    onChange={this.handleEmailChange}
-                  />
-                  <Form.Input
-                    fluid
-                    icon="lock"
-                    iconPosition="left"
-                    placeholder="Password"
-                    type="password"
-                    value={signInPassword}
-                    onChange={this.handlePasswordChange}
-                  />
+                  <Form.Input fluid icon="user" iconPosition="left" placeholder="E-mail address" type="email" value={signInEmail} onChange={this.handleEmailChange} />
+                  <Form.Input fluid icon="lock" iconPosition="left" placeholder="Password" type="password" value={signInPassword} onChange={this.handlePasswordChange} />
                   <Button onClick={this.onSignIn} primary animated fluid>
                     <Button.Content visible>Login</Button.Content>
                     <Button.Content hidden>
@@ -180,26 +158,15 @@ class LoginPage extends React.Component {
                     <Button.Content hidden>free</Button.Content>
                   </Button>
                 </Segment>
-                <Message
-                  warning
-                  color="yellow"
-                  header="Woah!"
-                  content={signInError}
-                />
-                <Message
-                  success
-                  color="green"
-                  header="Nice one!"
-                  content={signInError}
-                />
+                <Message warning color="yellow" header="Woah!" content={signInError} />
+                <Message success color="green" header="Nice one!" content={signInError} />
               </Form>
               <Message>
                 forgot passwords? <a href="#">Reset password</a>
               </Message>
             </Grid.Column>
           </Grid>
-        </div>
-      );
+        </div>;
     }
 
     return <Redirect to={from} />;

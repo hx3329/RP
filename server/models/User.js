@@ -17,13 +17,13 @@ const UserSchema = new mongoose.Schema({
     type: String,
     default: ""
   },
-  address:{
-    type:String,
-    default:""
+  address: {
+    type: String,
+    default: ""
   },
-  phone:{
-    type:String,
-    default:""
+  phone: {
+    type: String,
+    default: ""
   },
   isDeleted: {
     type: Boolean,

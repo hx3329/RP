@@ -498,15 +498,15 @@ class AppMap extends Component {
       "  </tbody>" +
       "</table>";
 
-      var flightsSource = new VectorSource({
+    var flightsSource = new VectorSource({
       wrapX: false,
       attributions: attribution,
       loader: function() {
         // var flightsData = flightJson.flights;
-          var flightsData = {};
-          if(localStorage.getItem("the_main_map")){
-              flightsData = JSON.parse(localStorage.getItem("the_main_map"));
-          }
+        var flightsData = {};
+        if (localStorage.getItem("the_main_map")) {
+          flightsData = JSON.parse(localStorage.getItem("the_main_map"));
+        }
         var CityData = CityJson;
         for (var i = 0; i < flightsData.length; i++) {
           // var flight = flightsData[i];
