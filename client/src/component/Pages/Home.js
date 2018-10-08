@@ -30,7 +30,7 @@ const HomepageHeading = ({ mobile }) => (
       <Container text>
         <Header
           as="h1"
-          content="findgroup-APstorm"
+          content="Flights-Data Visualization"
           inverted
           style={{
             fontSize: mobile ? "2em" : "4em",
@@ -41,7 +41,7 @@ const HomepageHeading = ({ mobile }) => (
         />
         <Header
           as="h2"
-          content="Do you want to find group?"
+          content="Do you want to view airlines in a map?"
           inverted
           style={{
             fontSize: mobile ? "1.5em" : "1.7em",

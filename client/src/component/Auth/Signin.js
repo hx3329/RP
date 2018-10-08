@@ -13,6 +13,7 @@ import { getFromStorage, setInStorage } from "../../utils/storage";
 import fakeAuth from "./fakeAuth";
 import Redirect from "react-router-dom/es/Redirect";
 import {Link} from "react-router-dom";
+import logo from "../../logo.jpeg"
 //style
 const Style = {
   margin: "20px"
@@ -139,7 +140,7 @@ class LoginPage extends React.Component {
               {/*<Header as='h1' color='blue' textAlign='center' size='massive'>*/}
               {/*<Image src='./logo2.jpg' fluid/> Login*/}
               {/*</Header>*/}
-              <Image src={require("./logo.jpg")} height="200px" width="200px" verticalAlign="middle" />
+              <Image src={logo} height="200px" width="200px" verticalAlign="middle" />
               <Form className={formClassName} size="large">
                 <Segment stacked>
                   <Form.Input fluid icon="user" iconPosition="left" placeholder="E-mail address" type="email" value={signInEmail} onChange={this.handleEmailChange} />
@@ -162,7 +163,8 @@ class LoginPage extends React.Component {
                 <Message success color="green" header="Nice one!" content={signInError} />
               </Form>
               <Message>
-                forgot passwords? <a href="#">Reset password</a>
+                {/*forgot passwords? <a href="#">Reset password</a>*/}
+                forgot passwords? Contact Us: hx3329@gmail.com
               </Message>
             </Grid.Column>
           </Grid>

@@ -850,31 +850,31 @@ class AppMap extends Component {
       true
     );
 
-    //show and hide button
-    var startButton = document.getElementById("start");
-    function stopAnimation() {
-      animating = false;
-      startButton.textContent = "Show";
-
-      //remove listener
-      map.un("postcompose", animateFlights);
-    }
-
-    startButton.addEventListener(
-      "click",
-      function() {
-        if (animating) {
-          stopAnimation();
-        } else {
-          // console.log(vectorContext);
-          animating = true;
-          startButton.textContent = "Hide";
-          map.on("postcompose", animateFlights);
-          map.render();
-        }
-      },
-      true
-    );
+    // //show and hide button
+    // var startButton = document.getElementById("start");
+    // function stopAnimation() {
+    //   animating = false;
+    //   startButton.textContent = "Show";
+    //
+    //   //remove listener
+    //   map.un("postcompose", animateFlights);
+    // }
+    //
+    // startButton.addEventListener(
+    //   "click",
+    //   function() {
+    //     if (animating) {
+    //       stopAnimation();
+    //     } else {
+    //       // console.log(vectorContext);
+    //       animating = true;
+    //       startButton.textContent = "Hide";
+    //       map.on("postcompose", animateFlights);
+    //       map.render();
+    //     }
+    //   },
+    //   true
+    // );
   }
 
   // onChange = (e) => {
@@ -976,7 +976,7 @@ class AppMap extends Component {
         <div id="map" />
         <Button.Group color="teal" id="tool">
           <Button id="modify">Modify On</Button>
-          <Button id="start">Hide</Button>
+          {/*<Button id="start">Hide</Button>*/}
           <Dropdown
             placeholder="Select Map"
             value={selectStyle}

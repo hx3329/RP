@@ -1,6 +1,7 @@
 import React from "react";
 import { Button, Form, Grid, Image, Message, Segment } from "semantic-ui-react";
 import Joi from "joi-browser";
+import logo from "../../logo.jpeg";
 
 import {
   getFromStorage
@@ -32,7 +33,7 @@ const schema = {
     .required()
     .label("address"),
   phone: Joi.string()
-    .regex(/^([+]?|[0-9]{3,4}-)[0-9]{6,11}/)
+    .regex(/^([+]?|[0-9]{3,4}-|([0-9]{2,4}))[0-9]{6,11}/)
     .required()
     .label("Phone number")
 };
@@ -229,12 +230,12 @@ class SignUpPage extends React.Component {
             verticalAlign="middle"
           >
             <Grid.Column style={{ maxWidth: 450 }}>
-              <Image
-                src={require("./logo.jpg")}
-                height="200px"
-                width="200px"
-                verticalAlign="middle"
-              />
+              {/*<Image*/}
+                {/*src={logo}*/}
+                {/*height="200px"*/}
+                {/*width="200px"*/}
+                {/*verticalAlign="middle"*/}
+              {/*/>*/}
               <Form className={formClassName} size="large">
                 <Segment textAlign="left" stacked>
                   <Form.Field>
