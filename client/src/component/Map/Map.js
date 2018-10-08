@@ -17,7 +17,7 @@ import FullScreen from "ol/control/FullScreen";
 import Attribution from "ol/control/Attribution";
 import ScaleLine from "ol/control/ScaleLine";
 import { Button, Dropdown } from "semantic-ui-react";
-import * as turf from "turf";
+// import * as turf from "turf";
 
 import editStyle from "./Style";
 import attribution from "./Attribution";
@@ -156,9 +156,6 @@ class AppMap extends Component {
         }
         var CityData = CityJson;
         for (var i = 0; i < flightsData.length; i++) {
-          // var flight = flightsData[i];
-          // var from = flight[0];
-          // var to = flight[1];
 
           //customerize
           //get Class name
@@ -313,9 +310,9 @@ class AppMap extends Component {
 
     //change plane direction
     function planeRoation(new_p, old_p) {
-      //90 度 的 PI 值
+      //90 pi
       var pi_90 = Math.atan2(1, 0);
-      // current 的 PI 值
+      // current pi
       var pi_ac = Math.atan2(new_p[1] - old_p[1], new_p[0] - old_p[0]);
       return pi_90 - pi_ac;
     }
@@ -449,8 +446,7 @@ class AppMap extends Component {
       flightsLayer.un("postcompose", modifyFunction);
     }
 
-    modifyButton.addEventListener(
-      "click",
+    modifyButton.addEventListener("click",
       function() {
         if (modify) {
           stopModify();
