@@ -6,10 +6,9 @@ import {
   Redirect
 } from "react-router-dom";
 import Layout from "./component/Header/Layout";
-import About from "./component/Pages/About";
+import Profile from "./component/Pages/Profile";
 import Home from "./component/Pages/Home";
 import MapPage from "./component/Map/Map";
-import Group from "./component/Group/Group";
 import NotFound from "./component/Pages/NotFound";
 import Register from "./component/Auth/Register";
 import Signin from "./component/Auth/Signin";
@@ -57,19 +56,14 @@ class App extends React.Component {
         <Layout>
           <Switch>
             <Route exact path="/" component={Home} />
-            <Route path="/about" component={About} />
+            <Route path="/profile" component={Profile} />
             <Route path="/login" component={Signin} />
             <Route path="/signup" component={Register} />
             <PrivateRoute path="/map" component={MapPage} />
-            {/*<Route path="/map" render={() => <MapPage socket={this.state.socket}/>}/>*/}
-            {/*<Route*/}
-            {/*path="/data" redner={() =>  <h3>hi</h3>}*/}
-            {/*/>*/}
             <Route
               path="/data"
               render={() => <DataPage socket={this.state.socket} />}
             />
-            <PrivateRoute path="/group" component={Group} />
             <Route component={NotFound} />
           </Switch>
         </Layout>

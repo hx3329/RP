@@ -57,14 +57,8 @@ class MobileContainer extends Component {
               <Menu.Item as={Link} to="/map">
                 Map
               </Menu.Item>
-              <Menu.Item as={Link} to="/about">
-                About
-              </Menu.Item>
-              <Menu.Item as={Link} to="/group">
-                Group
-              </Menu.Item>
               <Menu.Item onClick={this.logout}>Log out</Menu.Item>
-              <Menu.Item as={Link} to="/about">
+              <Menu.Item as={Link} to="/profile">
                 Profile
               </Menu.Item>
             </Sidebar>
@@ -82,12 +76,6 @@ class MobileContainer extends Component {
               <Menu.Item as={Link} to="/map">
                 Map
               </Menu.Item>
-              <Menu.Item as={Link} to="/about">
-                About
-              </Menu.Item>
-              <Menu.Item as={Link} to="/group">
-                Group
-              </Menu.Item>
               <Menu.Item as={Link} to="/login">
                 Log in
               </Menu.Item>
@@ -100,12 +88,10 @@ class MobileContainer extends Component {
           <Sidebar.Pusher
             dimmed={sidebarOpened}
             onClick={this.handlePusherClick}
-            // style={{ minHeight: '100vh' }}
           >
             <Segment
               inverted
               textAlign="center"
-              // style={{ minHeight: 350, padding: '1em 0em' }}
               vertical
             >
               <Container>
@@ -115,12 +101,15 @@ class MobileContainer extends Component {
                       <Icon name="sidebar" />
                     </Menu.Item>
                     <Menu.Item position="right">
+                        <Button as={Link} to="/data"  color='teal' inverted style={{ marginRight: "0.5em" }}>
+                            InputData
+                        </Button>
                       <Button onClick={this.logout} inverted>
                         Log out
                       </Button>
                       <Button
                         as={Link}
-                        to="/about"
+                        to="/profile"
                         inverted
                         style={{ marginLeft: "0.5em" }}
                       >

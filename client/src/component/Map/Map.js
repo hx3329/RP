@@ -850,40 +850,8 @@ class AppMap extends Component {
       true
     );
 
-    // //show and hide button
-    // var startButton = document.getElementById("start");
-    // function stopAnimation() {
-    //   animating = false;
-    //   startButton.textContent = "Show";
-    //
-    //   //remove listener
-    //   map.un("postcompose", animateFlights);
-    // }
-    //
-    // startButton.addEventListener(
-    //   "click",
-    //   function() {
-    //     if (animating) {
-    //       stopAnimation();
-    //     } else {
-    //       // console.log(vectorContext);
-    //       animating = true;
-    //       startButton.textContent = "Hide";
-    //       map.on("postcompose", animateFlights);
-    //       map.render();
-    //     }
-    //   },
-    //   true
-    // );
-  }
 
-  // onChange = (e) => {
-  //     var style = e.target.value;
-  //     this.setState({selectStyle:style});
-  //     for (var i = 0; i<layers.length; i++) {
-  //         layers[i].setVisible(styles[i] === style);
-  //     }
-  // };
+  }
 
   handleChange = (e, { value }) => {
     this.setState({ selectStyle: value });

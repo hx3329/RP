@@ -14,7 +14,7 @@ import PropTypes from "prop-types";
 import React from "react";
 
 function handleTest() {
-  window.location = "/data";
+  window.location = "/map";
 }
 /*
 * Heads up! HomepageHeading uses inline styling

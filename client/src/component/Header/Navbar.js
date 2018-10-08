@@ -11,7 +11,6 @@ import PropTypes from "prop-types";
 import React from "react";
 import { Link } from "react-router-dom";
 import fakeAuth from "../Auth/fakeAuth";
-import { getFromStorage } from "../../utils/storage";
 
 /*
 * Neither Semantic UI nor Semantic UI React offer a responsive navbar
@@ -86,32 +85,17 @@ class DesktopContainer extends Component {
                 >
                   Map
                 </Menu.Item>
-                <Menu.Item
-                  name="about"
-                  active={activeItem === "about"}
-                  onClick={this.handleItemClick}
-                  as={Link}
-                  to="/about"
-                >
-                  About
-                </Menu.Item>
-                <Menu.Item
-                  name="group"
-                  active={activeItem === "group"}
-                  onClick={this.handleItemClick}
-                  as={Link}
-                  to="/group"
-                >
-                  Group
-                </Menu.Item>
                 {fakeAuth.isAuthenticated ? (
                   <Menu.Item position="right">
+                      <Button as={Link} to="/data"  color='teal' inverted={!fixed} style={{ marginRight: "0.5em" }}>
+                           InputData
+                      </Button>
                     <Button onClick={this.logout} inverted={!fixed}>
                       Log out
                     </Button>
                     <Button
                       as={Link}
-                      to="/about"
+                      to="/profile"
                       inverted={!fixed}
                       primary={fixed}
                       style={{ marginLeft: "0.5em" }}
