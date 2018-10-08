@@ -12,7 +12,6 @@ import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import React from "react";
 import fakeAuth from "../Auth/fakeAuth";
-import { getFromStorage } from "../../utils/storage";
 
 class MobileContainer extends Component {
   constructor(props) {
@@ -24,36 +23,7 @@ class MobileContainer extends Component {
   }
 
   logout() {
-    this.setState({
-      isLoading: true
-    });
-
-    const object = getFromStorage("the_main_app");
-    if (object && object.token) {
-      const { token } = object;
-      //verify token
-      fetch("/api/account/logout?token=" + token)
-        .then(res => res.json())
-        .then(json => {
-          if (json.success) {
-            window.localStorage.removeItem("the_main_app");
-            fakeAuth.signout();
-            this.setState({
-              //clear token
-              token: "",
-              isLoading: false
-            });
-          } else {
-            this.setState({
-              isLoading: false
-            });
-          }
-        });
-    } else {
-      this.setState({
-        isLoading: false
-      });
-    }
+    fakeAuth.out();
   }
 
   handlePusherClick() {

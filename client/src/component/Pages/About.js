@@ -34,6 +34,7 @@ class About extends Component {
               token: "",
               isLoading: false
             });
+              window.location = "/";
           } else {
             this.setState({
               isLoading: false

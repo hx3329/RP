@@ -2,7 +2,6 @@ import { Component } from "react";
 import {
   Button,
   Container,
-  Image,
   Menu,
   Responsive,
   Segment,
@@ -27,36 +26,7 @@ class DesktopContainer extends Component {
   }
 
   logout() {
-    this.setState({
-      isLoading: true
-    });
-
-    const object = getFromStorage("the_main_app");
-    if (object && object.token) {
-      const { token } = object;
-      //verify token
-      fetch("/api/account/logout?token=" + token)
-        .then(res => res.json())
-        .then(json => {
-          if (json.success) {
-            window.localStorage.removeItem("the_main_app");
-            fakeAuth.signout();
-            this.setState({
-              //clear token
-              token: "",
-              isLoading: false
-            });
-          } else {
-            this.setState({
-              isLoading: false
-            });
-          }
-        });
-    } else {
-      this.setState({
-        isLoading: false
-      });
-    }
+    fakeAuth.out();
   }
 
   handleItemClick = (e, { name }) => {
