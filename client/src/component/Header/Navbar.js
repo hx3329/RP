@@ -55,6 +55,7 @@ class DesktopContainer extends Component {
             textAlign="center"
             // style={{ minHeight: 700, padding: '1em 0em' }}
             vertical
+            color="teal"
           >
             <Menu
               fixed={fixed ? "top" : null}
@@ -87,7 +88,7 @@ class DesktopContainer extends Component {
                 </Menu.Item>
                 {fakeAuth.isAuthenticated ? (
                   <Menu.Item position="right">
-                      <Button as={Link} to="/data"  color='teal' inverted={!fixed} style={{ marginRight: "0.5em" }}>
+                      <Button as={Link} to="/data"  inverted={!fixed} style={{ marginRight: "0.5em" }}>
                            InputData
                       </Button>
                     <Button onClick={this.logout} inverted={!fixed}>

@@ -11,7 +11,7 @@ import PropTypes from "prop-types";
 
 const Footer = ({ mobile }) => (
   <Responsive>
-    <Segment inverted vertical style={{ padding: "5em 0em" }}>
+    <Segment inverted vertical  color='teal' style={{ padding: "5em 0em" }}>
       <Container>
         <Grid divided inverted stackable>
           <Grid.Row>

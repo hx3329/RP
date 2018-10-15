@@ -50,6 +50,7 @@ class MobileContainer extends Component {
               inverted
               vertical
               visible={sidebarOpened}
+              color='teal'
             >
               <Menu.Item as={Link} to="/" active>
                 Home
@@ -69,6 +70,7 @@ class MobileContainer extends Component {
               inverted
               vertical
               visible={sidebarOpened}
+              color='teal'
             >
               <Menu.Item as={Link} to="/" active>
                 Home
@@ -93,6 +95,7 @@ class MobileContainer extends Component {
               inverted
               textAlign="center"
               vertical
+              color="teal"
             >
               <Container>
                 {fakeAuth.isAuthenticated ? (
@@ -101,7 +104,7 @@ class MobileContainer extends Component {
                       <Icon name="sidebar" />
                     </Menu.Item>
                     <Menu.Item position="right">
-                        <Button as={Link} to="/data"  color='teal' inverted style={{ marginRight: "0.5em" }}>
+                        <Button as={Link} to="/data"  color="teal" inverted style={{ marginRight: "0.5em" }}>
                             InputData
                         </Button>
                       <Button onClick={this.logout} inverted>

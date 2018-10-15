@@ -186,7 +186,7 @@ class AppMap extends Component {
           //   [from[1] + 0.5, to[0] - 0.3],
           //   [to[1], to[0]]
           // ]);
-          //
+
           // var bezier = turf.bezier(linestring);
 
           // create an arc circle between the two locations

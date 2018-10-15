@@ -26,6 +26,7 @@ const HomepageHeading = ({ mobile }) => (
       textAlign="center"
       style={{ minHeight: 700, padding: "1em 0em" }}
       vertical
+      color='teal'
     >
       <Container text>
         <Header
